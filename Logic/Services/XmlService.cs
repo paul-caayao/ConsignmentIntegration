@@ -17,7 +17,7 @@ namespace ConsignmentIntegration.Logic.Services
 
         public void ProcessRows(Consignment consignment)
         {
-            // Group the rows by number
+            // Group the rows by number to represent individual item
             var rowGroups = consignment.RowElements
                 .Where(e => e.Name.StartsWith("Row_")) 
                 .GroupBy(e => e.Name.Split('_')[1])    
@@ -28,7 +28,6 @@ namespace ConsignmentIntegration.Logic.Services
                 var row = new Row();
                 var barcodeProperties = group.Where(e => e.Name.StartsWith($"Row_{group.Key}_Barcode"));
 
- 
                 foreach (var element in group)
                 {
                     var propertyName = element.Name.Split('_')[2]; 

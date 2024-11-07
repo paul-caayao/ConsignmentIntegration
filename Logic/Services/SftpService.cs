@@ -33,7 +33,7 @@ namespace ConsignmentIntegration.Logic.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine($"An error occured during the retrieval of consignment: {e.Message}");
+                Console.WriteLine($"An error occured during the retrieval of XML file: {e.Message}");
                 throw;
 
             }

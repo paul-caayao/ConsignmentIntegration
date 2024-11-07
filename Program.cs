@@ -25,18 +25,29 @@ var sftpService = app.Services.GetRequiredService<ISftpService>();
 var xmlService = app.Services.GetRequiredService<IXmlService>();
 var transVirtualService = app.Services.GetRequiredService<ITransVirtualService>();
 
+Console.WriteLine("TransVirtual Technical Test - Paul Caayao");
+
+//Hardcoded based on specification
 string fileName = "Consignment.xml";
 
+Console.WriteLine($"Initializing connection to FTP server via SFTP protocol and retrieving {fileName}");
 string xmlContent = await sftpService.RetrieveConsignment(fileName);
 
 if (xmlContent != null)
 {
+    Console.WriteLine("Starting deserialization of XML file...");
     var consignment = xmlService.DeserializeXml<Consignment>(xmlContent);
+    Console.WriteLine("Processing additional items within the consignment...");
     xmlService.ProcessRows(consignment);
 
+    Console.WriteLine("Creating new consignment into TransVirtual database... ");
     var response = await transVirtualService.SendConsignmentToApi(consignment);
+
+    Console.WriteLine("Commencing PDF Label Generation... ");
     await transVirtualService.ProcessPdfLabel(response.Id, response.PdfLabels);
 }
+
+Console.WriteLine("Process complete.");
 
 
 

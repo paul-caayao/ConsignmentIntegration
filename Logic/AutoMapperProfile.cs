@@ -4,6 +4,8 @@ using ConsignmentIntegration.Models;
 
 namespace ConsignmentIntegration.Logic
 {
+
+    //Mapping of XML Model which we can assume that represents the data and eventaully create a DTO to map it based on API specification
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
@@ -31,7 +33,7 @@ namespace ConsignmentIntegration.Logic
                 .ForMember(dest => dest.ConsignmentReceiverIsResidential, opt => opt.MapFrom(src => src.ReceiverIsResidential))
                 .ForMember(dest => dest.Rows, opt => opt.MapFrom(src => src.Rows))
                 .ForMember(dest => dest.ReturnPdfLabels, opt =>
-                    opt.MapFrom(src => src.ReturnPdfLabels ? "y" : null)) 
+                    opt.MapFrom(src => src.ReturnPdfLabels ? "y" : null)) // Set Bool to "y" according to API specification
                 .ForMember(dest => dest.ReturnPdfConsignment, opt =>
                     opt.MapFrom(src => src.ReturnPdfConsignment ? "y" : null));
 

@@ -4,6 +4,12 @@ using System.Xml.Serialization;
 
 namespace ConsignmentIntegration.Models
 {
+    /*
+    Assumption on Consignment structure:
+    Each Consignment represents the job and items are represented by Rows
+    Assuming that the element format for each row is represented by <Row_(index of item)_attribute>, we stored it as a list inside Consignment
+    Inside the Rows, there can also be a multiple Barcode that eventually mapped as Items in the TransVirtual Consignment API
+    */
     [XmlRoot("Consignment")]
     public class Consignment
     {
