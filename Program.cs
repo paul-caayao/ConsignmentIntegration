@@ -48,8 +48,8 @@ if (xmlContent != null)
 }
 
 Console.WriteLine("Process complete.");
-
-
+Console.WriteLine("Press any key to exit...");
+Console.ReadKey();
 
 
 
