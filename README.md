@@ -5,6 +5,7 @@ This is a technical exam on parsing XML data from an FTP server and sending it t
 **Getting started**
 
 Prerequisites
+
 .NET 8 SDK https://dotnet.microsoft.com/en-us/download/dotnet/8.0
 
 Steps to test
